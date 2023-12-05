@@ -21,7 +21,7 @@ const nombre = document.getElementById("nombre"),
   apellido = document.getElementById("apellido"),
   telefono = document.getElementById("telefono"),
   email = document.getElementById("email");
-const agenda = [];
+const agenda = JSON.parse(localStorage.getItem("agendaKey")) || [];
 
 //funciones
 const mostrarModal = () => {
@@ -43,17 +43,14 @@ const crearContacto = (e) => {
   );
   console.log(nuevoContacto);
 
-//agrego el contacto nuevo al array
-agenda.push(nuevoContacto);
+  //agrego el contacto nuevo al array
+  agenda.push(nuevoContacto);
 
-//resetear el formulario
-limpiarFormulario();
-//guardar el array en localstorage
-guardarEnLocalstorage();
-//dibujar una fila
-
-
-
+  //resetear el formulario
+  limpiarFormulario();
+  //guardar el array en localstorage
+  guardarEnLocalstorage();
+  //dibujar una fila
 };
 
 function limpiarFormulario() {
