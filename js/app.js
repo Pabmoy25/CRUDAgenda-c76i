@@ -61,6 +61,31 @@ function guardarEnLocalstorage() {
   localStorage.setItem("agendaKey", JSON.stringify(agenda));
 }
 
+function crearFila(contacto, fila) {
+  const tablaContactos = document.querySelector("tbody");
+  tablaContactos.innerHTML += `<tr>
+    <th scope="row">${fila}</th>
+    <td>${contacto.nombre}</td>
+    <td>${contacto.apellido}</td>
+    <td>${contacto.email}</td>
+    <td>${contacto.celular}</td>
+    <td>
+      <button class="btn btn-warning">Editar</button
+      ><button class="btn btn-danger" onclick="borrarContacto('${contacto.id}')">Borrar</button>
+    </td>
+  </tr>`;
+}
+
+function cargaInicial() {
+  if (agenda.length > 0) {
+    agenda.map((itemContacto, posicion) =>
+      crearFila(itemContacto, posicion + 1)
+    );
+  }
+}
+
 //logica extra
 btnAgregarContacto.addEventListener("click", mostrarModal);
 formularioContacto.addEventListener("submit", crearContacto);
+
+cargaInicial();
