@@ -47,8 +47,22 @@ const crearContacto = (e) => {
 agenda.push(nuevoContacto);
 
 //resetear el formulario
+limpiarFormulario();
+//guardar el array en localstorage
+guardarEnLocalstorage();
+//dibujar una fila
+
+
 
 };
+
+function limpiarFormulario() {
+  formularioContacto.reset();
+}
+
+function guardarEnLocalstorage() {
+  localStorage.setItem("agendaKey", JSON.stringify(agenda));
+}
 
 //logica extra
 btnAgregarContacto.addEventListener("click", mostrarModal);
